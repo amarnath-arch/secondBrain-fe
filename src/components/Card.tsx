@@ -6,7 +6,7 @@ interface CardProps {
   icon: ReactElement;
   title: string;
   shareLink: string;
-  type: "youtube" | "twitter";
+  type: "youtube" | "tweet";
 }
 
 export default function Card({ icon, title, shareLink, type }: CardProps) {
@@ -33,7 +33,6 @@ export default function Card({ icon, title, shareLink, type }: CardProps) {
       <div className="mt-5 overflow-hidden max-h-fit h-full">
         {type == "youtube" && (
           <iframe
-            // src="https://www.youtube.com/embed/K-ssUVyfn5g"
             src={shareLink.replace("watch?v=", "embed/")}
             title="YouTube video player"
             frameBorder="0"
@@ -43,7 +42,7 @@ export default function Card({ icon, title, shareLink, type }: CardProps) {
             className="w-full rounded-xl"
           ></iframe>
         )}
-        {type == "twitter" && (
+        {type == "tweet" && (
           <div className="h-fit">
             <blockquote className="twitter-tweet">
               <a href={shareLink.replace("x.com", "twitter.com")}></a>

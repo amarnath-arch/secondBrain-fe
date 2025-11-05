@@ -6,6 +6,7 @@ interface inputProps {
   placeholder: string;
   forwardedRef: React.Ref<HTMLInputElement>;
   size: "sm" | "md" | "lg";
+  customClass?: string;
 }
 
 const inputSize = {
@@ -21,13 +22,14 @@ export default function Input({
   placeholder,
   forwardedRef,
   size = "sm",
+  customClass,
 }: inputProps) {
   return (
     <input
       type={type}
       placeholder={placeholder}
       ref={forwardedRef}
-      className={`bg-transparent ${inputSize[size]} outline-slate-100 border-slate-100 border rounded-lg ${defaultStyles} hover:shadow-secondary`}
+      className={`bg-transparent ${inputSize[size]} outline-slate-100 border-slate-100 border rounded-lg ${defaultStyles} hover:shadow-secondary ${customClass}`}
     />
   );
 }

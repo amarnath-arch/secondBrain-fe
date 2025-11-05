@@ -1,8 +1,9 @@
-import type { ReactElement } from "react";
+import { useEffect, type ReactElement } from "react";
 import Card from "./Card";
 import TwitterIcon from "./icons/TwitterIcon";
 import YoutubeIcon from "./icons/YoutubeIcon";
 import Navbar from "./Navbar";
+import useFetch from "./hooks/useFetch";
 
 export default function MainContent() {
   const CardContent: {
@@ -85,13 +86,32 @@ export default function MainContent() {
     },
   ];
 
+  const { data, loading } = useFetch("/api/v1/user/content");
+
+  useEffect(() => {
+    if ((data?.length || 0) > 0) {
+      console.log(data);
+    }
+  }, [data]);
+
   return (
     <div className="flex-1 p-10 ml-72">
       <Navbar />
       <div className="mt-10 flex gap-10 flex-wrap">
-        {CardContent.map(({ title, icon, shareLink, type }) => (
+        {/* {CardContent.map(({ title, icon, shareLink, type }) => (
           <Card title={title} icon={icon} shareLink={shareLink} type={type} />
-        ))}
+        ))} */}
+        {loading
+          ? "...loading"
+          : data?.map(({ title, link, type }, index) => (
+              <Card
+                key={index}
+                title={title}
+                icon={type == "youtube" ? <YoutubeIcon /> : <TwitterIcon />}
+                shareLink={link}
+                type={type}
+              />
+            ))}
       </div>
     </div>
   );

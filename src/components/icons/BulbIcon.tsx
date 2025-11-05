@@ -1,6 +1,6 @@
 import { stylesSize, type iconProps } from ".";
 
-export default function BulbIcon({ size = "sm" }: iconProps) {
+export default function BulbIcon({ size = "sm", customClass }: iconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8,7 +8,7 @@ export default function BulbIcon({ size = "sm" }: iconProps) {
       viewBox="0 0 24 24"
       strokeWidth="2.5"
       stroke="currentColor"
-      className={`${stylesSize[size]} w-10 h-10 text-primary`}
+      className={`${stylesSize[size]} text-primary ${customClass}`}
     >
       <path
         stroke-linecap="round"
