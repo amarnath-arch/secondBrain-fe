@@ -4,11 +4,13 @@ import Button from "../ui/Button";
 import BulbIcon from "../icons/BulbIcon";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/useAuth";
 
 export default function Auth() {
   const userNameRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
+  const { logIn } = useAuth();
 
   const [authType, setAuthType] = useState<"signIn" | "signUp">("signUp");
 
@@ -34,7 +36,7 @@ export default function Auth() {
       );
       console.log(response);
       const token = response.data?.token || "";
-      localStorage.setItem("token", token);
+      logIn(token);
       navigate("/dashboard");
     } else if (authType == "signUp") {
       const response = await axios.post(
@@ -46,7 +48,7 @@ export default function Auth() {
       );
       console.log(response);
       const token = response.data?.token || "";
-      localStorage.setItem("token", token);
+      logIn(token);
       navigate("/dashboard");
     }
   }

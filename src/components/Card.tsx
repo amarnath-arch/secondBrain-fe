@@ -11,7 +11,7 @@ interface CardProps {
 
 export default function Card({ icon, title, shareLink, type }: CardProps) {
   return (
-    <div className="w-[17vw] max-h-fit bg-white shadow-xl border-[1px] border-slate-100 border-solid rounded-xl p-4 hover:-translate-y-1 transition-transform duration:300 hover:shadow-secondary hover:scale-102">
+    <div className="min-w-fit max-h-fit bg-white shadow-xl border-[1px] border-slate-100 border-solid rounded-xl p-4 hover:-translate-y-1 transition-transform duration:300 hover:shadow-secondary hover:scale-102">
       <div className="flex justify-between items-center w-full text-slate-700">
         <div className="flex gap-2 items-center basis-4/5">
           <div>{icon}</div>

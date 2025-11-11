@@ -15,7 +15,7 @@ export default function Modal({
   return (
     <div className="fixed inset-0 bg-slate-200/80 z-50 flex items-center justify-center">
       <div className="bg-slate-50 p-8 rounded-xl shadow-2xl w-110 shadow-secondary ">
-        <h2 className="text-xl font-semibold">{children}</h2>
+        {children}
       </div>
     </div>
   );
